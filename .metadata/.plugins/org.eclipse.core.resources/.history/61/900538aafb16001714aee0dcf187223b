@@ -1,10 +1,7 @@
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class HuffmanTree {
 
-	static HashMap<Integer,String> codeTable = new HashMap<Integer,String>();
-	
 	public static ArrayList<Node> createHuffmanTreeFromBinaryHeap(ArrayList<Node> binaryHeap) {
 
 		while (binaryHeap.size() > 1) {
@@ -34,19 +31,6 @@ public class HuffmanTree {
 			assignCodes(root.leftChild);
 		if (root.leftChild != null)
 			assignCodes(root.rightChild);
-	}
-	
-	public static HashMap<Integer,String> buildCodeTable(Node root){
-		if (root.leftChild != null)
-			buildCodeTable(root.leftChild);
-		if(root.key!=-1){
-			//insert into a hashmap
-			codeTable.put(root.key, root.path.toString());
-		}
-		if (root.rightChild != null)
-			buildCodeTable(root.rightChild);
-		
-		return codeTable;
 	}
 
 }
