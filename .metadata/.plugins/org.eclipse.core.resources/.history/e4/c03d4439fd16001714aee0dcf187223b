@@ -18,15 +18,12 @@ public class Main {
 		// The name of the file to open.
 
 		HashMap<Integer, Integer> freqTable = new HashMap<Integer, Integer>();
-		ArrayList<Integer> inputTable = new ArrayList<Integer>();
-
 		String fileName = "E://Courses//ADS//Project//sample_input_small.txt";
 		String line = null;
 		try {
 			FileReader fileReader = new FileReader(fileName);
 			BufferedReader bufferedReader = new BufferedReader(fileReader);
 			while ((line = bufferedReader.readLine()) != null) {
-				inputTable.add(Integer.parseInt(line));
 				if (freqTable.containsKey(Integer.parseInt(line))) {
 					int val = freqTable.get(Integer.parseInt(line));
 					freqTable.put(Integer.parseInt(line), ++val);
@@ -55,7 +52,7 @@ public class Main {
 		// Create MinHeap
 		ArrayList<Node> binaryHeapNodeArray = MinHeap.make_heap(frequencyTable);
 		// Node.printArray(binaryHeapNodeArray);
-		// System.out.println();
+		//System.out.println();
 
 		ArrayList<Node> hTree = new ArrayList<Node>();
 		hTree = HuffmanTree.createHuffmanTreeFromBinaryHeap(binaryHeapNodeArray);
@@ -72,11 +69,8 @@ public class Main {
 		Iterator j = temp.iterator();
 		while (j.hasNext()) {
 			Map.Entry mapentry = (Map.Entry) j.next();
-			System.out.println((int) mapentry.getKey() + " ==> " + codeTable.get((int) mapentry.getKey()));
+			System.out.println((int) mapentry.getKey());
 		}
-
-		System.out.println();
-		Encoder.MinHeapEncoder(inputTable, codeTable);
 
 	}
 

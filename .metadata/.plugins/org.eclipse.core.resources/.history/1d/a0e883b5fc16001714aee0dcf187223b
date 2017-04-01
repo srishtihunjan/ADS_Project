@@ -18,15 +18,12 @@ public class Main {
 		// The name of the file to open.
 
 		HashMap<Integer, Integer> freqTable = new HashMap<Integer, Integer>();
-		ArrayList<Integer> inputTable = new ArrayList<Integer>();
-
 		String fileName = "E://Courses//ADS//Project//sample_input_small.txt";
 		String line = null;
 		try {
 			FileReader fileReader = new FileReader(fileName);
 			BufferedReader bufferedReader = new BufferedReader(fileReader);
 			while ((line = bufferedReader.readLine()) != null) {
-				inputTable.add(Integer.parseInt(line));
 				if (freqTable.containsKey(Integer.parseInt(line))) {
 					int val = freqTable.get(Integer.parseInt(line));
 					freqTable.put(Integer.parseInt(line), ++val);
@@ -44,40 +41,33 @@ public class Main {
 		}
 
 		Set keyset = freqTable.entrySet();
+		int size = keyset.size();
 		ArrayList<Node> frequencyTable = new ArrayList<Node>();
+		int index = 0;
 		Iterator i = keyset.iterator();
 		while (i.hasNext()) {
 			Map.Entry mapentry = (Map.Entry) i.next();
 			Node temp = new Node((int) mapentry.getValue(), (int) mapentry.getKey());
 			frequencyTable.add(temp);
+			index++;
+
 		}
 
 		// Create MinHeap
 		ArrayList<Node> binaryHeapNodeArray = MinHeap.make_heap(frequencyTable);
-		// Node.printArray(binaryHeapNodeArray);
-		// System.out.println();
+		//Node.printArray(binaryHeapNodeArray);
+		System.out.println();
 
 		ArrayList<Node> hTree = new ArrayList<Node>();
 		hTree = HuffmanTree.createHuffmanTreeFromBinaryHeap(binaryHeapNodeArray);
-		// Node.printTree(hTree);
-
+		//Node.printTree(hTree);
+		
 		HuffmanTree.assignCodes(hTree.get(0));
 		Node.printTree(hTree);
-		System.out.println();
-
-		HashMap<Integer, String> codeTable = new HashMap<Integer, String>();
+		
+		HashMap<Integer,String> codeTable = new HashMap<Integer,String>();
 		codeTable = HuffmanTree.buildCodeTable(hTree.get(0));
-
-		Set temp = codeTable.entrySet();
-		Iterator j = temp.iterator();
-		while (j.hasNext()) {
-			Map.Entry mapentry = (Map.Entry) j.next();
-			System.out.println((int) mapentry.getKey() + " ==> " + codeTable.get((int) mapentry.getKey()));
-		}
-
-		System.out.println();
-		Encoder.MinHeapEncoder(inputTable, codeTable);
-
+		
 	}
 
 }

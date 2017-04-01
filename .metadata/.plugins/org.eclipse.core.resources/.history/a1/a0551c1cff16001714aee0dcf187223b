@@ -1,0 +1,10 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class Encoder {
+
+	public static void MinHeapEncoder(ArrayList<Integer> ipTable, HashMap<Integer,String> cTable){
+		
+	}
+	
+}
