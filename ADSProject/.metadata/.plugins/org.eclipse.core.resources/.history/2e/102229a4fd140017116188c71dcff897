@@ -1,0 +1,36 @@
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.Scanner;
+
+public class HuffmanTree {
+	private static FileInputStream fileinpstream = null;
+	private static BufferedInputStream bufferinpstream = null;
+	static BufferedInputStream bf = new BufferedInputStream(System.in);
+
+	public static void main(String[] args) {
+		try {
+
+			File myFile = new File("E://Courses//ADS//Project//sample_input_large.txt");
+			// System.out.println(myFile.length());
+			// String filename = myFile.getName();
+			// long fileSize = myFile.length();
+			byte[] mybytearray = new byte[(int) myFile.length()];
+			fileinpstream = new FileInputStream(myFile);
+			bufferinpstream = new BufferedInputStream(fileinpstream);
+			bufferinpstream.read(mybytearray, 0, mybytearray.length);
+			BufferedReader r = new BufferedReader(new InputStreamReader(bf, StandardCharsets.UTF_8));
+			System.out.println("Hi");
+			while (true)
+				System.out.println("Hi"+r.readLine());
+			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+
+	}
+
+}

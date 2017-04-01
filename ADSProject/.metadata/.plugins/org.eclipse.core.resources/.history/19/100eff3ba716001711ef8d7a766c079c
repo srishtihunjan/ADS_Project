@@ -1,0 +1,18 @@
+import java.util.ArrayList;
+
+public class HuffmanTree {
+
+	public ArrayList<Node> Make_From_binary(ArrayList<Node> node_array) {
+		
+		while (node_array.size() > 1) {
+			Node element1 = Minheap.Removemin(node_array);
+			Node element2 = Minheap.Removemin(node_array);
+			Node element = new Node(element1.frequency + element2.frequency, -1);
+			element.leftChild = element1;
+			element.rightChild = element2;
+			Minheap.Insert(node_array,element);
+		}
+		return node_array;
+	}
+
+}
