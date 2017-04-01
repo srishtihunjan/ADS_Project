@@ -60,7 +60,11 @@ public class Main {
 
 		ArrayList<Node> hTree = new ArrayList<Node>();
 		hTree = HuffmanTree.createHuffmanTreeFromBinaryHeap(binaryHeapNodeArray);
+		//Node.printTree(hTree);
+		
+		HuffmanTree.assignCodes(hTree.get(0));
 		Node.printTree(hTree);
+		
 	}
 
 }

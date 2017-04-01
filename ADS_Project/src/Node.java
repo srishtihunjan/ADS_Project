@@ -6,12 +6,16 @@ public class Node implements Comparable<Node> {
 	int key;
 	Node leftChild;
 	Node rightChild;
+	Node parent;
+	StringBuilder path;
 
 	public Node(int frequency, int key) {
 		this.leftChild = null;
 		this.rightChild = null;
 		this.frequency = frequency;
 		this.key = key;
+		this.parent = null;
+		this.path = new StringBuilder();
 	}
 
 	public int compareTo(Node n) {
@@ -32,19 +36,19 @@ public class Node implements Comparable<Node> {
 		Iterator itr = node_array.iterator();
 		while (itr.hasNext()) {
 			Node element = (Node) itr.next();
-			System.out.println(element.key + ": " + element.frequency);
+			System.out.println(element.key + ": " + element.frequency + " -- " + element.path.toString());
 		}
 	}
 
 	public static void printTree(ArrayList<Node> node_array) {
 
-		PrintTreeDFS(node_array.remove(0));
+		PrintTreeDFS(node_array.get(0));
 	}
 
 	public static void PrintTreeDFS(Node root) {
 		if (root.leftChild != null)
 			PrintTreeDFS(root.leftChild);
-		System.out.println(root.key + ":" + root.frequency);
+		System.out.println(root.key + ":" + root.frequency + " -- " + root.path.toString());
 		if (root.rightChild != null)
 			PrintTreeDFS(root.rightChild);
 	}
